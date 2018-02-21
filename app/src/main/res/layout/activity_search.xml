@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout tools:context="com.app.lianxi.myapplication1.ui.SearchActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@color/base_actionbar4"
+        android:layout_alignParentTop="true"
+        android:id="@+id/relativeLayout">
+
+        <Button
+            android:id="@+id/textView_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/def_button_bg"
+            android:onClick="backClick"
+            android:text="返回"
+            android:textColor="@color/base_actionbar_bg" />
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/textView2"
+        android:textColor="@color/base_actionbar_bg"
+        android:text="Search"
+        android:layout_centerVertical="true"
+        android:textSize="22sp"
+        android:layout_gravity="center|top"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
+
+
+    <LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    android:background="@drawable/search_btn_bg"
+    android:id="@+id/ll_search_container"
+    android:layout_below="@+id/relativeLayout"
+    android:layout_margin="5dp">
+
+        <EditText
+            android:id="@+id/et_search_content"
+            style="?android:attr/textViewStyle"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="搜索"
+            android:padding="2dp"
+            android:textColor="#FF666666"
+            android:textSize="16sp" />
+
+    <ImageButton android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:padding="0dp"
+        android:background="@null"
+        android:id="@+id/ib_search_btn"
+        android:src="@drawable/search_drawable_left"
+        android:scaleType="centerInside"/>
+
+</LinearLayout>
+
+    <ListView
+        android:id="@+id/listView_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@+id/ll_search_container"
+        android:layout_below="@+id/ll_search_container" />
+
+    <include android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/loading_data"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" layout="@layout/loading_data"/>
+
+</RelativeLayout>

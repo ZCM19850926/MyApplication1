@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.app.lianxi.myapplication1.ui.MainActivity1">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:id="@+id/main_bottom">
+        <!--   android:layout_alignParentStart="true"-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tab_home"
+                android:background="@mipmap/top_bar"
+                android:textColor="@drawable/tab_textcolor"
+                android:drawableTop="@drawable/tab_home_btn"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:scaleType="matrix"
+                android:onClick="tabSelectClick"
+                android:id="@+id/button_tab_home"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"   />
+            <!--  android:layout_alignParentStart="true" -->
+
+
+        </RelativeLayout>
+
+<!--
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/top_bar"
+                android:textColor="@drawable/tab_textcolor"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:drawableTop="@drawable/tab_discover_btn"
+                android:scaleType="matrix"
+                android:onClick="tabSelectClick"
+                android:text="@string/tab_discove"
+                android:id="@+id/button2_tab_discover"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                />
+
+            &lt;!&ndash;   android:layout_alignParentStart="true"&ndash;&gt;
+
+
+
+
+
+
+        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/top_bar"
+                android:textColor="@drawable/tab_textcolor"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:drawableTop="@drawable/tab_share_btn"
+                android:scaleType="matrix"
+                android:onClick="tabSelectClick"
+                android:text="@string/app_share"
+                android:id="@+id/button3_tab_share"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                />
+            <!--    android:layout_alignParentStart="true"-->
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/top_bar"
+                android:textColor="@drawable/tab_textcolor"
+                android:paddingBottom="2dip"
+                android:paddingTop="7dip"
+                android:drawableTop="@drawable/tab_personal_btn"
+                android:scaleType="matrix"
+                android:onClick="tabSelectClick"
+                android:text="@string/tab_personal"
+                android:id="@+id/button4_tab_personal"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                />
+            <!-- android:layout_alignParentStart="true"-->
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/main_bottom">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+
+
+
+    </RelativeLayout>

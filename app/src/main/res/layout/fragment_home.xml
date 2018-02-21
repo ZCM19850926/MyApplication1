@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+ <!--   <com.allthelucky.common.view.ImageIndicatorView
+        android:id="@+id/indicate_view"
+        android:layout_width="match_parent"
+        android:layout_height="160dp" />-->
+
+    <com.panxw.android.imageindicator.ImageIndicatorView
+        android:id="@+id/indicate_view"
+        android:layout_width="match_parent"
+        android:layout_height="160dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/indicate_view"
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/loading_data"
+        android:id="@+id/loading_data"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+
+        />
+</RelativeLayout>

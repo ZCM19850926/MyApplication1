@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="base_actionbar_bg">#f5f5f5</color>
+    <color name="base_actionbar_bg1">#ffffff</color>
+  <color name="base_actionbar_bg2">#e6e6e6</color>
+    <color name="base_actionbar">#ae952c</color>
+    <color name="base_actionbar1">#17abe3</color>
+    <color name="base_actionbar2">#a42e25</color>
+    <color name="base_actionbar3">#53e317</color>
+    <color name="base_actionbar4">#707070</color>
+    <color name="base_actionbar5">#000000</color>
+
+</resources>
