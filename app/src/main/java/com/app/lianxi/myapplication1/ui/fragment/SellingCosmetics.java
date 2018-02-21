@@ -18,6 +18,7 @@ import com.app.lianxi.myapplication1.R;
 import com.app.lianxi.myapplication1.adapter.base.ListItemAdapter;
 import com.app.lianxi.myapplication1.ui.MainActivity1;
 import com.app.lianxi.myapplication1.vo.CosmeticsBuySell;
+import com.app.lianxi.myapplication1.vo.Share;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SellingCosmetics extends Fragment {
     private MainActivity1 mainActivity1;
     private ListView listView2_category_sell;
     private  LinearLayout load_layout;
-private ArrayList<CosmeticsBuySell> cosmeticsBuySells=new ArrayList<>();
+private ArrayList<Share> cosmeticsBuySells=new ArrayList<>();
     ListItemAdapter listItemAdapter;
 
 
@@ -50,7 +51,7 @@ private ArrayList<CosmeticsBuySell> cosmeticsBuySells=new ArrayList<>();
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_category,null);
         listView2_category_sell=(ListView) view.findViewById(R.id.listView2_category);
-        load_layout=(ListView)view.findViewById(R.id.load_layout);
+        load_layout=view.findViewById(R.id.load_layout);
         listItemAdapter=new ListItemAdapter(mainActivity1,cosmeticsBuySells);
         listView2_category_sell.setAdapter(listItemAdapter);
 
@@ -62,28 +63,27 @@ private ArrayList<CosmeticsBuySell> cosmeticsBuySells=new ArrayList<>();
         if (cosmeticsBuySells.size()==0) {
 load_layout.setVisibility(View.VISIBLE);
 listView2_category_sell.setVisibility(View.GONE);
-            BmobQuery<CosmeticsBuySell> query=new BmobQuery<>();
+            BmobQuery<Share> query=new BmobQuery<>();
             query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
             query.addWhereEqualTo("CategoryId","WrJv888N");
-            query.findObjects(mainActivity1, new FindListener<CosmeticsBuySell>() {
-          /*      @Override
-                public void done(List<CosmeticsBuySell> list, BmobException e) {
-
-                }*/
-
+            query.findObjects(new FindListener<Share>() {
                 @Override
-                public void onSuccess(List<CosmeticsBuySell> list) {
+                public void done(List<Share> list, BmobException e) {
                     load_layout.setVisibility(View.GONE);
                     listView2_category_sell.setVisibility(View.VISIBLE);
-                    listItemAdapter.setCosmeticsBuySells((ArrayList<CosmeticsBuySell>) list);
+                    listItemAdapter.setCosmeticsBuySells((ArrayList<Share>) list);
                     listItemAdapter.notifyDataSetChanged();
+                }
 
-                }
-                @Override
-                public void onError(int i,String list) {
-                    load_layout.setVisibility(View.GONE);
-                    listView2_category_sell.setVisibility(View.VISIBLE);
-                }
+//                @Override
+//                public void onSuccess(List<CosmeticsBuySell> list) {
+//
+//                }
+//                @Override
+//                public void onError(int i,String list) {
+//                    load_layout.setVisibility(View.GONE);
+//                    listView2_category_sell.setVisibility(View.VISIBLE);
+//                }
             });
 
 
@@ -114,8 +114,8 @@ listView2_category_sell.setVisibility(View.GONE);
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
+//    @Override
+//    public void onClick(View v) {
+//
+//    }
 }

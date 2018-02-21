@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
 /**
@@ -47,8 +48,8 @@ public class SharingCosmetics extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_category,null);
         listView2_category_sell=(ListView) view.findViewById(R.id.listView2_category);
-        load_layout=(ListView)view.findViewById(R.id.load_layout);
-        listItemAdapter=new ListItemAdapter(mainActivity1,cosmeticsBuySells);
+        load_layout=view.findViewById(R.id.load_layout);
+        listItemAdapter=new ListItemAdapter(getActivity(),cosmeticsBuySells);
         listView2_category_sell.setAdapter(listItemAdapter);
 
 
@@ -62,52 +63,28 @@ public class SharingCosmetics extends Fragment {
             BmobQuery<Share> query=new BmobQuery<>();
             query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
             query.addWhereEqualTo("CategoryId","K7XyPPPc");
-            query.findObjects(mainActivity1, new FindListener<Share>() {
-          /*      @Override
-                public void done(List<CosmeticsBuySell> list, BmobException e) {
-
-                }*/
-
+            query.findObjects(new FindListener<Share>(){
                 @Override
-                public void onSuccess(List<Share> list) {
+                public void done(List<Share> list, BmobException e) {
                     load_layout.setVisibility(View.GONE);
                     listView2_category_sell.setVisibility(View.VISIBLE);
                     listItemAdapter.setCosmeticsBuySells((ArrayList<Share>) list);
                     listItemAdapter.notifyDataSetChanged();
-
-                }
-                @Override
-                public void onError(int i,String list) {
-                    load_layout.setVisibility(View.GONE);
-                    listView2_category_sell.setVisibility(View.VISIBLE);
                 }
             });
+//                @Override
+//                public void onSuccess(List<Share> list) {
+//
+//
+//                }
+//                @Override
+//                public void onError(int i,String list) {
+//                    load_layout.setVisibility(View.GONE);
+//                    listView2_category_sell.setVisibility(View.VISIBLE);
+//                }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-
-
+         }
     }
 }

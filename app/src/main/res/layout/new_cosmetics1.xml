@@ -10,16 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     >
 
-    <ImageView android:layout_height="100dp"
+    <!--<ImageView android:layout_height="100dp"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:src="@mipmap/ic_launcher"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:id="@+id/imageView_Image"/>-->
+
+    <ImageView
         android:layout_width="100dp"
-        android:src="@mipmap/ic_launcher"
-
+        android:layout_height="100dp"
+        android:id="@+id/imageView_Image"
+        android:scaleType="centerCrop"
         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true"
-          android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:id="@+id/imageView_Image"/>
-
+        android:layout_alignParentTop="true"/>
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"

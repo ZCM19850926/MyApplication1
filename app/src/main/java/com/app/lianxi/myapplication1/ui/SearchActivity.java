@@ -34,6 +34,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 private ListView listView_search;
 private ListItemAdapter listItemAdapter;
 private  View loading_data;
+    private String search_content = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +52,13 @@ private  View loading_data;
     }
    @Override
     public void onClick(View v){
-        String search_content=et_search_content.getText().toString();
+       search_content=et_search_content.getText().toString();
        if (TextUtils.isEmpty(search_content)) {
            showToast("请输入搜索内容");
        return;
-
-   }
+       }
        AppUtils.hideInputMethod(v);
-searchVideoAndCosmetics();
+       searchVideoAndCosmetics();
 
 }
 
@@ -67,64 +68,68 @@ searchVideoAndCosmetics();
     private void searchVideoAndCosmetics() {
         loading_data.setVisibility(View.VISIBLE);
         listView_search.setVisibility(View.GONE);
-        BmobQuery<CosmeticsBuySell> query=new BmobQuery<>();
-        BmobQuery<CosmeticsVideo> query1=new BmobQuery<>();
-        BmobQuery<Share> query2=new BmobQuery<>();
+        BmobQuery<Share> query=new BmobQuery<>();
+//        BmobQuery<Share> query1=new BmobQuery<>();
+//        BmobQuery<Share> query2=new BmobQuery<>();
 
-        query.addWhereContains("Name",search_content);
-        query.addWhereContains("uploadername",search_content);
+//        query.addWhereContains("Name",search_content);
+//        query.addWhereContains("uploadername",search_content);
         query.addWhereContains("gName",search_content);
-query.findObjects(this, new FindListener<CosmeticsBuySell>() {
-
+        query.findObjects(new FindListener<Share>() {
 
     @Override
-    public void onSuccess(List<CosmeticsBuySell> list) {
-        listItemAdapter=new ListItemAdapter(SearchActivity.this, (ArrayList<CosmeticsBuySell>) list);
+    public void done(List<Share> list, BmobException e) {
+        listItemAdapter=new ListItemAdapter(SearchActivity.this, (ArrayList<Share>) list);
         listView_search.setAdapter(listItemAdapter);
         loading_data.setVisibility(View.GONE);
         listView_search.setVisibility(View.VISIBLE);
     }
-    @Override
-    public void onError(int i,String s){
-        loading_data.setVisibility(View.GONE);
-        listView_search.setVisibility(View.VISIBLE);
-    }
+
+//    @Override
+//    public void onSuccess(List<CosmeticsBuySell> list) {
+//
+//    }
+//    @Override
+//    public void onError(int i,String s){
+//        loading_data.setVisibility(View.GONE);
+//        listView_search.setVisibility(View.VISIBLE);
+//    }
 });
 
-
-        query.findObjects(this, new FindListener<CosmeticsVideo>() {
-
-
-            @Override
-            public void onSuccess(List<CosmeticsVideo> list) {
-                listItemAdapter=new ListItemAdapter(SearchActivity.this,(ArrayList<CosmeticsVideo>) list);
-                listView_search.setAdapter(listItemAdapter);
-                loading_data.setVisibility(View.GONE);
-                listView_search.setVisibility(View.VISIBLE);
-            }
-            @Override
-            public void onError(int i,String s){
-                loading_data.setVisibility(View.GONE);
-                listView_search.setVisibility(View.VISIBLE);
-            }
-        });
-
-        query.findObjects(this, new FindListener<Share>() {
-
-
-            @Override
-            public void onSuccess(List<Share> list) {
-                listItemAdapter=new ListItemAdapter(SearchActivity.this, (ArrayList<Share>) list);
-                listView_search.setAdapter(listItemAdapter);
-                loading_data.setVisibility(View.GONE);
-                listView_search.setVisibility(View.VISIBLE);
-            }
-            @Override
-            public void onError(int i,String s){
-                loading_data.setVisibility(View.GONE);
-                listView_search.setVisibility(View.VISIBLE);
-            }
-        });
+//
+//        query.findObjects(this, new FindListener<CosmeticsVideo>() {
+//
+//
+//            @Override
+//            public void onSuccess(List<CosmeticsVideo> list) {
+//                listItemAdapter=new ListItemAdapter(SearchActivity.this,(ArrayList<CosmeticsVideo>) list);
+//                listView_search.setAdapter(listItemAdapter);
+//                loading_data.setVisibility(View.GONE);
+//                listView_search.setVisibility(View.VISIBLE);
+//            }
+//            @Override
+//            public void onError(int i,String s){
+//                loading_data.setVisibility(View.GONE);
+//                listView_search.setVisibility(View.VISIBLE);
+//            }
+//        });
+//
+//        query.findObjects(this, new FindListener<Share>() {
+//
+//
+//            @Override
+//            public void onSuccess(List<Share> list) {
+//                listItemAdapter=new ListItemAdapter(SearchActivity.this, (ArrayList<Share>) list);
+//                listView_search.setAdapter(listItemAdapter);
+//                loading_data.setVisibility(View.GONE);
+//                listView_search.setVisibility(View.VISIBLE);
+//            }
+//            @Override
+//            public void onError(int i,String s){
+//                loading_data.setVisibility(View.GONE);
+//                listView_search.setVisibility(View.VISIBLE);
+//            }
+//        });
 
 
 

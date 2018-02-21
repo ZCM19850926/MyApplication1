@@ -60,17 +60,16 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
-return super.onKeyDown(keyCode, event);}
-
 /**
  * 关闭所有Activity界面
  *
  * */
-public static void closeAll(){
+public static void closeAll() {
     for (int i = 0; i < activities.size(); i++) {
         activities.get(i).finish();
 
     }
+}
 
 
 /**

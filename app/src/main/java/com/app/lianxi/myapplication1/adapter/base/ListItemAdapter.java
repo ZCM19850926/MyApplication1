@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.app.lianxi.myapplication1.R;
 import com.app.lianxi.myapplication1.vo.CosmeticsBuySell;
+import com.app.lianxi.myapplication1.vo.CosmeticsVideo;
+import com.app.lianxi.myapplication1.vo.Share;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.ArrayList;
@@ -23,10 +25,11 @@ import java.util.ArrayList;
 public class ListItemAdapter extends BaseAdapter {
     private String path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES+"/CodingStore").getAbsolutePath();//图片缓存的路径
     private Context context;
-    private ArrayList<CosmeticsBuySell> cosmeticsBuySells;
+    private ArrayList<Share> cosmeticsBuySells=new ArrayList<>();
+
    private BitmapUtils bitmapUtils;
 
-   public ListItemAdapter(Context context,ArrayList<CosmeticsBuySell> cosmeticsBuySells){
+   public ListItemAdapter(Context context,ArrayList<Share> cosmeticsBuySells){
       this.context=context;
       this.cosmeticsBuySells=cosmeticsBuySells;
       bitmapUtils =new BitmapUtils(context,path);
@@ -61,34 +64,31 @@ public class ListItemAdapter extends BaseAdapter {
 
 
 
-        CosmeticsBuySell cosmeticsBuySell=cosmeticsBuySells.get(position);
-        tv_name.setText(cosmeticsBuySell.getName());
+        Share cosmeticsBuySell=cosmeticsBuySells.get(position);
+        if(!cosmeticsBuySell.getCategoryId().equals("S6s4KKKP")){
+           // textView5_price.setText("原价：￥"+String.valueOf(cosmeticsBuySell.getPrice()+"*1.25"));
+            textView7_discountPrice.setText("￥"+String .valueOf(cosmeticsBuySell.getPrice()));//这里要获取什么价格？对
+            //textView8_discount.setText(String.valueOf("8"+"折"));//哪个字段按是打折字段？这个你自己像怎么处理先给你写成死的
+        }
+        tv_name.setText(cosmeticsBuySell.getgName());
         textView3_star.setText(cosmeticsBuySell.getStar()+"星");
-       textView5_price.setText("原价：￥"+String.valueOf(cosmeticsBuySell.getPrice()+"*1.25"));
+
         textView5_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        textView7_discountPrice.setText("￥"+String .valueOf(cosmeticsBuySell.getPrice()));//这里要获取什么价格？对
-        textView8_discount.setText(String.valueOf("8"+"折"));//哪个字段按是打折字段？这个你自己像怎么处理先给你写成死的
 
  //运行到你手机上了？我看不到效果了其他的你自己整吧
-
-
-
-
 
       //显示图片
       bitmapUtils.display(imageView_image,cosmeticsBuySell.getImage());//这个方法找再写一个行吗 不知道你这里想干嘛，加载图片路径？首页列表不是有图片吗一个一个的
 
-
-
-
       return convertView ;
     }
 
-    public ArrayList<CosmeticsBuySell> getCosmeticsBuySells() {
+    public ArrayList<Share> getCosmeticsBuySells() {
         return cosmeticsBuySells;
     }
 
-    public void setCosmeticsBuySells(ArrayList<CosmeticsBuySell> cosmeticsBuySells) {
+    public void setCosmeticsBuySells(ArrayList<Share> cosmeticsBuySells) {
         this.cosmeticsBuySells = cosmeticsBuySells;
     }
+
 }

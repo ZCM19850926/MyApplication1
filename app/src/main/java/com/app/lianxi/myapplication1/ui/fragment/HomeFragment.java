@@ -15,6 +15,8 @@ import com.app.lianxi.myapplication1.R;
 import com.app.lianxi.myapplication1.adapter.base.ListItemAdapter;
 import com.app.lianxi.myapplication1.ui.MainActivity1;
 import com.app.lianxi.myapplication1.vo.CosmeticsBuySell;
+import com.app.lianxi.myapplication1.vo.CosmeticsVideo;
+import com.app.lianxi.myapplication1.vo.Share;
 import com.panxw.android.imageindicator.AutoPlayManager;
 import com.panxw.android.imageindicator.ImageIndicatorView;
 
@@ -34,7 +36,9 @@ public class HomeFragment extends Fragment {
     private ListView listView;
     private View loading_data;
     private MainActivity1 mainActivity1;
-    private ArrayList<CosmeticsBuySell> cosmeticsBuySells=new ArrayList<>();
+    private ArrayList<Share> cosmeticsBuySells=new ArrayList<>();
+    private ArrayList<Share>  share=new ArrayList<>();
+    private ArrayList<CosmeticsVideo> cosmeticsVideo=new ArrayList<>();
     private ListItemAdapter listItemAdapter;
 
 
@@ -74,42 +78,22 @@ private void loadDate(){
     if(cosmeticsBuySells.size()==0) {
         loading_data.setVisibility(View.VISIBLE);
         listView.setVisibility(View.GONE);
-        BmobQuery<CosmeticsBuySell> query = new BmobQuery<>();
+        BmobQuery<Share> query = new BmobQuery<>();
         query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);//先从缓存中取数据,没有再从网络上取
-
-
-
         query.addWhereEqualTo("Star","4");
-        query.findObjects(new FindListener<CosmeticsBuySell>(){
+        query.findObjects(new FindListener<Share>(){
             @Override
-            public void done(List<CosmeticsBuySell> list, BmobException e) {
-                cosmeticsBuySells=(ArrayList<CosmeticsBuySell>) list;
-                Log.i("tag", "打印出"+cosmeticsBuySells);
+            public void done(List<Share> list, BmobException e) {
+                cosmeticsBuySells=(ArrayList<Share>) list;
                 listItemAdapter.setCosmeticsBuySells(cosmeticsBuySells);
                 listItemAdapter.notifyDataSetChanged();
-
                 loading_data.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-
             }
-           public void onSuccess(List<CosmeticsBuySell> list) {
-
-
-
-           }
-           public void onError(int i, String s) {
-               loading_data.setVisibility(View.GONE);
-               listView.setVisibility(View.VISIBLE);
-      }
-
-
         });
-
     }
-
-
-
 }
+
     private void initIndicateView(View view) {
         indicate_View=(ImageIndicatorView)view.findViewById(R.id.indicate_view);
         final Integer[] resArray = new Integer[] { R.mipmap.ic_launcher1,R.mipmap.ic_launcher4,R.mipmap.ic_launcher3,R.mipmap.ic_launcher4};
